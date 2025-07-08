@@ -1,0 +1,25 @@
+name: Deploy App for PR Review
+
+on: 
+  pull_request:
+    types: [opened, reopened]
+    branches: 
+      - develop
+
+jobs:
+  check-style:
+    runs-on: ubuntu
+
+    steps:
+      - uses: actions/checkout@v2
+      # Node.jsのセットアップ
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "22.x"
+
+      - name: lint
+        run: |
+          npm i
+          npm run lint
+        
