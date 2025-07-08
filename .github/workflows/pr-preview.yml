@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: "22.x"
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+        
       - name: lint
         run: |
           npm i
